@@ -1877,9 +1877,8 @@ def infer_config(args, constructor, trace_patch, layout_patch):
         args["histnorm"] = args["ecdfnorm"]
 
     # Compute applicable grouping attributes
-    for k in group_attrables:
-        if k in args:
-            grouped_attrs.append(k)
+    group_attrables_in_args = [k for k in group_attrables if k in args]
+    grouped_attrs.extend(group_attrables_in_args)
 
     # Create grouped mappings
     grouped_mappings = [make_mapping(args, a) for a in grouped_attrs]
