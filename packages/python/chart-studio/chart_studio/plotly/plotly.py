@@ -1392,6 +1392,9 @@ def add_share_key_to_url(plot_url, attempt=0):
     Check that share key is enabled and update url to include the secret key
 
     """
+    if not isinstance(attempt, int):
+        raise TypeError('attempt should be integer type')
+
     urlsplit = six.moves.urllib.parse.urlparse(plot_url)
     username = urlsplit.path.split("/")[1].split("~")[1]
     idlocal = urlsplit.path.split("/")[2]
